@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+<style>
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #0D0D0D;
+   color: white;
+   text-align: center;
+}
+body {
+    background-image: url("images/chat2.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+#chat-btn {
+  width: 40px;
+  height: 28px;
+  background-color: #62cfc1;
+  border-radius: 4px;
+  position: relative;
+}
+#chat-btn:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 10px;
+    bottom: -10px;
+    border-left: 10px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 10px solid #62CFC1;
+}
+.nav navbar-nav 
+{
+
+}
+
+</style>
+</head>
+<body ng-app="app">
+<div class="navbar-wrapper">
+<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top w3-animate-opacity">
+		<div class="container">
+			<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+				</button>
+				<div id="navbar-collapse" class="collapse navbar-collapse">  
+			<a class="navbar-brand" href="#/home" ng-hide="currentUser.username"><font face="stencil" size="5" color="white"><u id="chat-btn">CHAT HOME</u></font></a>
+				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav ">
+				<a class="navbar-brand" href="#/register" ng-hide="currentUser.username"><span class="glyphicon glyphicon-user"></span><b>&nbsp;Sign Up</b></a>
+				<a class="navbar-brand" href="#/login" ng-hide="currentUser.username"><span class="glyphicon glyphicon-log-in"></span><b>&nbsp;Login</b></a></li>
+                </ul>
+            
+                <a class="navbar-brand" href="#/savejob" id="ntext" ng-show="currentUser.role=='admin'"><b>Post a Job</b></a>
+                <a class="navbar-brand" href="#/getalljobs" id="ntext" ng-show="currentUser.username"><b>All Jobs</b></a>
+                
+                <li class="dropdown" ng-show="currentUser.username">
+						<a href="" id="ntext" class="dropdown-toggle" data-toggle="dropdown"><b>Blogs</b><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+                <li><a href="#/getallblogs" id="ntext" ng-show="currentUser.username"><b>All Blogs</b></a></li>
+				<li><a href="#/saveblogpost" id="ntext" ng-show="currentUser.username"><b>Add a new Blog</b></a></li></ul>
+					</li>
+		
+				<!--  <li><a href="#/updateuser" ng-show="currentUser.username"><b>updateuser</b></a></li>-->
+				<!-- <li><a href="#/getAllUsers" ng-hide="currentUser.firstname"><u>displayuserdata</u></font></a>-->
+				<li class="dropdown" ng-show="currentUser.username">
+						<a href="" id="ntext" class="dropdown-toggle" data-toggle="dropdown" ><b>Friends</b><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+				<li><a href="#/suggesteduserslist" id="ntext" ng-show="currentUser.username"><b>People you may know</b></a></li>
+				<li><a href="#/pendingfriendrequests" id="ntext" ng-show="currentUser.username"><b>Pending Friend requests</b></a></li>
+				<li><a href="#/friendsList" id="ntext" ng-show="currentUser.username"><b>Your Friends</b></a></li>
+				
+					</li></ul>
+        <li><a href="#/viewprofile" id="ntext" ng-show="currentUser.username"><b>View My Profile</b></a></li>
+   		
+   		<li><a href="#/chat" id="ntext" ng-show="currentUser.firstname"><b>Chat</b></a></li>
+							
+				<li class="dropdown">
+						<a href="" id="ntext" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username">Welcome, {{currentUser.firstname}}<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>			
+       			
+		<li><a href="" id="ntext" ng-click="logout()" ng-show="currentUser.username"><b>Logout</b></a></li>							
+							 					
+					<li ng-show="currentUser.username"><a href="#/profilepic" id="ntext"><span
+							class="profile-img"> <img
+								src="http://localhost:8098/chatapprest/getimage/{{currentUser.username}}"
+								width="30px" height="30px" class="img-rounded"></span></a></li>
+								</ul></div></ul>
+								
+				
+				
+			</div>
+			</div>
+			</nav>
+			</div>
+			</div>
+			 
+			
+		<div class="container">
+
+<div ng-view=""></div>
+
+</div>
+		
+
+<div class="footer" >
+<font face="stencil" size="5" color="white"> 
+  <p>ChatApp</p>
+  </font>
+</div>
+</body>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="controller/usercontroller.js"></script>
+<script type="text/javascript" src="controller/profilepicturecontroller.js"></script>
+<script type="text/javascript" src="service/userservice.js"></script>
+<script type="text/javascript" src="controller/blogcontroller.js"></script>
+<script type="text/javascript" src="controller/blogdetailcontroller.js"></script>
+<script type="text/javascript" src="controller/friendcontroller.js"></script>
+<script type="text/javascript" src="controller/frienddetailcontroller.js"></script>
+<script type="text/javascript" src="service/blogservice.js"></script>
+<script type="text/javascript" src="service/friendservice.js"></script>
+<script type="text/javascript" src="controller/jobcontroller.js"></script>
+<script type="text/javascript" src="service/jobservice.js"></script>
+<script type="text/javascript" src="service/mydetailservice.js"></script>
+<script type="text/javascript" src="controller/mydetailcontroller.js"></script>
+<script type="text/javascript" src="controller/chatcontroller.js"></script>
+<script type="text/javascript" src="service/chatservice.js"></script>
+<script type="text/javascript" src="controller/profilepicturecontroller.js"></script>	
+</html>

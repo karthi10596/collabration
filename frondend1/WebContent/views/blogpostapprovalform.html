@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="row">
+<br><br><br>
+<div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p><font size="4" color="green"><center><div>{{blogPost.blogTitle}}</div></center></font></p>
+<br/>
+<p align="right"><span><strong>Created By:</strong>{{blogPost.postedBy.username}}</span></p>
+ <p align="right"><span><strong>CreatedOn: </strong>{{blogPost.postedOn | date:'medium'}}</span></p>
+          
+          </div>
+          <div class="panel-body">
+          {{blogPost.description}}
+          
+          </div>
+</div>
+</div>
+
+</div>
+
+<form>
+
+<input type="radio" ng-model="blogPost.approved" value="true">Approve<br><br>
+
+<input type="radio" ng-model="blogPost.approved" value="false">Reject<br><br>
+
+<a href="" ng-click="updateBlogPost()" class="button">OK</a>
+<a href="#getallblogs" class="button">BACK</a>
+
+</form>
+
+</body>
+</html>

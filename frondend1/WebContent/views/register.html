@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.btn btn-primary btn-block
+{
+background-color: "green";
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<center>
+<h2><strong><u>Registration</u></strong></h2></center>
+<form class="form-horizontal">
+
+<div class="form-group">
+    <label class="col-md-4 control-label"><b>FirstName</b></label>
+    <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input placeholder="Enter firstname" name="firstname" class="form-control input-md" ng-model="user.firstname" type="text" required>
+  </div>
+  </div>
+</div>
+<div class="form-group">
+    <br><label class="col-md-4 control-label"><b>LastName</b></label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input placeholder="Enter lastname" name="lastname" class="form-control input-md" ng-model="user.lastname" type="text" required>
+  </div>
+    </div>
+    </div>
+    </center>
+    <div class="form-group">
+     <br><label class="col-md-4 control-label"><b>Email-Id</b></label>
+     <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input placeholder="Enter E-Mail Address" name="emailid" class="form-control input-md" ng-model="user.emailId" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Eg:karthi@xxx.yyy>"required>
+ </div>
+  </div>
+</div>
+    <div class="form-group">
+    <br><label class="col-md-4 control-label"><b>Phonenumber</b></label>
+    <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input placeholder="Enter phonenumber" name="phonenumber"class="form-control input-md" pattern="[789][0-9]{9}" title="Should be 10 digits starting from 7,8 or 9" ng-model="user.phonenumber" type="text" required>
+  </div>
+  </div>
+</div>
+    <div class="form-group">
+    <br><label class="col-md-4 control-label"><b>UserName</b></label>
+    <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input placeholder="Enter Username" name="username" class="form-control input-md" pattern="[a-z0-9]{5,30}" minlength="5" maxlength="30"
+        title="it should be of min 5 char, start with small letter & no space." ng-model="user.username" type="text" required>
+  </div>
+  </div>
+</div>
+<div class="form-group">
+     <br><label class="col-md-4 control-label"><b>Password</b></label>
+     <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input placeholder="Enter Password" name="password" class="form-control input-md" minlength="6" maxlength="16"  title="Six or more characters" ng-model="user.password" type="password" required>
+  </div>
+</div>
+</div>
+<div class="radio col-md-2">
+      <label class="radio col-md-3"><input type="radio" name="radiobutton" ng-model="user.role" value="STUDENT">Student</label>
+    </div>
+    
+    <div class="radio col-md-2">
+      <label class="radio col-md-3"><input type="radio" name="radiobutton" ng-model="user.role" value="admin">Admin</label>
+    </div>
+    
+    <div class="radio col-md-2">
+      <label class="radio col-md-3"><input type="radio" name="radiobutton" ng-model="user.role" value="EMPLOYEE">Employee</label>
+    </div>
+    <br>
+<div class="col-md-3">
+
+<button type="submit" class="btn btn-primary btn-block" ng-click="registerUser()">Register</button>
+
+</div>
+
+</form>
+<script type="text/javascript" src="js/validate.js"></script>
+</body>
+</html>

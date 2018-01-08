@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<br>
+<br>
+ <header class="container">
+      <div id="heading" class="masthead">
+        
+        <h2>Chat <small>Online Chat Room</small></h2>
+       
+      </div>
+   </header>
+   
+   <section class="main container">
+     <div class="row">
+    	<div class="col-md-12">
+	   		<p class="lead">Type in the box below to start a chat!</p>
+	   		
+	   	</div> 
+     
+     </div>
+   	
+   	
+   	<div class"WebContent/views/chat.html"="row">
+   		<div class="col-md-12">
+   		<form ng-submit="addMessage()" name="chatMsg">
+
+	<input type="text" ng-model="message"/>
+	<span class="count" ng-bind=" max - message.length">140</span>
+	<button ng-disabled=" message.length>140 ||message.length==0">Send</button>
+	
+	</form>
+
+	<p ng-repeat="message in messages|orderBy:'time':true">
+		
+		<time>{{message.time | date: 'HH:mm'}}</time>
+		<span> {{message.message}}</span>
+	</p>
+</div>
+   		</div>
+   			   	
+ 
+   
+   </section>
+
+</body>
+</html>

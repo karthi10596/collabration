@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<div class="w3-animate-opacity">
+<br>
+<br>
+<br>
+<center>
+<br><br>
+<h1><strong>Your Friends</strong></h1>
+<p>Here are a list of your friends...</p>
+<br>
+
+<table class="table table-responsive">
+
+<tr>
+
+<th>Names</th>
+<!-- <th>Engage in a conversation</th>-->
+</tr>
+
+<tr ng-repeat="f in friends">
+<td ng-hide="f.fromId==currentUser.username">{{f.fromId}}</td>
+<td ng-hide="f.toId==currentUser.username">{{f.toId}}</td>
+ <td><img src="http://localhost:8098/chatapprest/getimage/{{f.fromId}}"
+ng-hide="f.fromId==currentUser.username" width="50" height="50" class="img-rounded">
+<img src="http://localhost:8097/chatapprest/getimage/{{f.toId}}"
+ng-hide="f.toId==currentUser.username" width="50" height="50" class="img-rounded"></td>
+
+</tr>
+</table>
+
+</center>
+</div>
+
+</body>
+</html>

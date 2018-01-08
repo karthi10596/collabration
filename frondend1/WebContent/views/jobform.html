@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<div class="container">
+<div class="w3-animate-opacity">
+<span style="color:red">{{error.message}}</span>
+
+
+<br>
+
+<form class="form-horizontal">
+<font face="arial narrow" size="3">
+<br><br>
+<div class="form-group">
+  <label class="col-md-2 control-label" >Job Title: </label>
+  	<div class="col-md-3">
+	<input type="text" placeholder="Enter Job Title" ng-model="job.jobtitle" class="form-control">
+	</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label" >Job Description: </label>
+  	<div class="col-md-7">
+	<textarea class="form-control" placeholder="Enter Job description" ng-model="job.jobDescription" ></textarea>
+	</div>
+</div>
+<div class="form-group">
+  <label class="col-md-2 control-label" >Experience </label>
+  	<div class="col-md-7">
+	<textarea class="form-control" placeholder="Enter Years of Experience" ng-model="job.yrsOfExp" ></textarea>
+	</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label" >Salary: </label>
+  	<div class="col-md-3">
+	<input placeholder="Enter Salary" class="form-control input-md" type="text" ng-model="job.salary" >
+	</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label" >Required Skills: </label>
+  	<div class="col-md-7">
+	<textarea placeholder="Enter Skills" class="form-control" ng-model="job.skillsrequired" ></textarea>
+	</div>
+</div>
+<div class="form-group">
+  <label class="col-md-2 control-label" >Company</label>
+  	<div class="col-md-3">
+	<input placeholder="Enter Location" class="form-control input-md" type="text" ng-model="job.companyname" >
+	</div>
+</div> 
+<div class="form-group">
+  <label class="col-md-2 control-label" >Location: </label>
+  	<div class="col-md-3">
+	<input placeholder="Enter Location" class="form-control input-md" type="text" ng-model="job.location" >
+	</div>
+</div> 
+
+<div class="form-group">
+<div class="col-md-3">
+<button type="submit" class="btn btn-primary btn-block col-md-3" ng-click="saveJob()">Post</button>
+</div>
+</div>
+</font>
+</form>
+</div>
+</div>
+
+</body>
+</html>

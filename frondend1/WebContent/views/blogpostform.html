@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2>add the new blogPost</h2>
+<div>
+<form class="form-horizontal">
+
+<font face="arial narrow" size="3">
+<br>
+<br>
+<br>
+<br>
+
+Blog Title:<input type="text" placeholder="Enter the Topic" class="form-control" ng-model="blogPost.blogTitle"><br>
+
+Content:<textarea rows="10"  placeholder="Enter the Content" class="form-control" ng-model="blogPost.description"></textarea>
+
+<br>
+<button type="submit" class="btn btn-primary btn-block col-md-3" ng-click="addBlogPost()">Post</button>
+
+
+</form>
+<br><br><br><br><br>
+</div>
+
+</body>
+</html>
